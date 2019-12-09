@@ -144,9 +144,7 @@
 			return;
 		}
 
-		if ( URIMODERN.features.betaShaming ) {
-			startShaming();
-		}
+		startShaming();
 
 	}
 
