@@ -1,0 +1,48 @@
+{
+  "name": "uri-code-compliance",
+  "description": "Checks for ADA compliance and other coding issues.",
+  "version": "0.1.0",
+  "homepage": "https://www.uri.edu",
+  "repository": "https://github.com/uriweb/uri-code-compliance",
+  "docs": "https://github.com/uriweb/uri-code-compliance#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "University of Rhode Island",
+  "humans": [
+    "Brandon Fuller <bjcfuller@uri.edu>"
+  ],
+  "license": "GPL-3.0",
+  "licenseURI": "http://www.gnu.org/licenses/gpl.html",
+  "devDependencies": {
+    "autoprefixer": "^9.6.4",
+    "gulp": "^4.0.2",
+    "gulp-concat": ">=2.6.1",
+    "gulp-header": "^2.0.9",
+    "gulp-jscs": ">=4.1.0",
+    "gulp-jshint": ">=2.1.0",
+    "gulp-postcss": ">=8.0.0",
+    "gulp-replace-task": "^0.11.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-shell": ">=0.7.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-debug": "^3.0.0",
+    "gulp-terser": ">=1.1.7",
+    "jshint": "^2.10.2",
+    "lodash": ">=4.17.13"
+  },
+  "browserslist": {
+    "production": [
+      "> 1%",
+      "last 2 versions",
+      "Firefox >= 20",
+      "iOS >=8"
+    ],
+    "development": [
+      "> 1%",
+      "last 2 versions",
+      "Firefox >= 20",
+      "iOS >=8"
+    ]
+  }
+}
