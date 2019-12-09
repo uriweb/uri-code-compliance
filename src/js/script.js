@@ -11,8 +11,8 @@
 	'use strict';
 
 	var data = {
-		'elClass': 'shamed-element',
-		'messageClass': 'shame-message',
+		'elClass': 'compliance-flagged-element',
+		'messageClass': 'compliance-message',
 		'issues': {
 			'total': 0,
 			'errors': 0,
@@ -23,7 +23,7 @@
 
 	document.addEventListener( 'DOMContentLoaded', init, false );
 
-	class Shame {
+	class Compliance {
 
 		/**
 		 * Iterate over the tests
@@ -42,7 +42,7 @@
 
 				for ( j = 0; j < tests[i].selectors.length; j++ ) {
 					test.selector = tests[i].selectors[j];
-					Shame.runTest( specs.tag, specs.class, test );
+					Compliance.runTest( specs.tag, specs.class, test );
 				}
 
 			}
@@ -53,7 +53,7 @@
 		 * Do the test
 		 *
 		 * @param tag str The tag to search for
-		 * @param classname str The wrapper class to pass to Shame.display()
+		 * @param classname str The wrapper class to pass to Compliance.display()
 		 * @param test obj The test information
 		 */
 		static runTest( tag, classname, test ) {
@@ -64,16 +64,16 @@
 
 			for ( i = 0; i < els.length; i++ ) {
 
-				Shame.display( els[i], classname, test.message, test.type );
+				Compliance.display( els[i], classname, test.message, test.type );
 
 			}
 
 		}
 
 		/**
-		 * Display the shame
+		 * Display the error
 		 *
-		 * @param el el The element to shame
+		 * @param el el The element to flag
 		 * @param classname str The class to give the wrapper
 		 * @param message str The message to display
 		 * @param type str The issue type
@@ -88,19 +88,19 @@
 			if ( el.classList.contains( data.elClass ) ) {
 
 				ul = el.previousSibling;
-				ul.appendChild( Shame.buildMessage( type, message ) );
+				ul.appendChild( Compliance.buildMessage( type, message ) );
 
 			} else {
 
 				el.classList.add( data.elClass );
 
 				wrapper = document.createElement( 'span' );
-				wrapper.className = 'shame-wrapper ' + classname;
+				wrapper.className = 'compliance-wrapper ' + classname;
 
 				ul = document.createElement( 'ul' );
 				ul.className = data.messageClass + 's';
 
-				ul.appendChild( Shame.buildMessage( type, message ) );
+				ul.appendChild( Compliance.buildMessage( type, message ) );
 
 				wrapper.appendChild( ul );
 
@@ -123,8 +123,8 @@
 			var li;
 
 			li = document.createElement( 'li' );
-			li.className = data.messageClass + ' shame-type-' + type;
-			li.innerHTML = '<div class="shame-icon">' + type + '</div><div class="shame-message-content">' + message + '</div>';
+			li.className = data.messageClass + ' compliance-type-' + type;
+			li.innerHTML = '<div class="compliance-icon">' + type + '</div><div class="compliance-message-content">' + message + '</div>';
 			li.addEventListener(
 				 'click',
 				function() {
@@ -144,34 +144,34 @@
 			return;
 		}
 
-		startShaming();
+		start();
 
 	}
 
-	function startShaming() {
+	function start() {
 
 		var x, div;
 
 		data.main = document.getElementById( 'main' );
 
-		shameImages();
-		shameLinks();
-		shameIDs();
-		shameStyles();
-		shameDeprecatedTags();
-		shameDiscouragedAttributes();
+		doImages();
+		doLinks();
+		doIDs();
+		doStyles();
+		doDeprecatedTags();
+		doDiscouragedAttributes();
 
 		displayStatus();
 
 	}
 
-	function shameImages() {
+	function doImages() {
 
 		var specs, tests;
 
 		specs = {
 			tag: 'img',
-			class: 'shamed-image'
+			class: 'flagged-image'
 		};
 
 		tests = [
@@ -187,17 +187,17 @@
 		}
 		];
 
-		Shame.iterateTests( specs, tests );
+		Compliance.iterateTests( specs, tests );
 
 	}
 
-	function shameLinks() {
+	function doLinks() {
 
 		var specs, tests;
 
 		specs = {
 			tag: 'a',
-			class: 'shamed-link'
+			class: 'flagged-link'
 		};
 
 		tests = [
@@ -266,11 +266,11 @@
 		}
 		];
 
-		Shame.iterateTests( specs, tests );
+		Compliance.iterateTests( specs, tests );
 
 	}
 
-	function shameIDs() {
+	function doIDs() {
 
 		var els, i, id, ids = {}, x;
 
@@ -286,7 +286,7 @@
 			if ( ids[x] > 1 ) {
 				els = data.main.querySelectorAll( '[id="' + x + '"]' );
 				for ( i = 0; i < els.length; i++ ) {
-					Shame.display( els[i], 'shamed-duplicate-id', 'No duplicate ids ("' + x + '")', 'error' );
+					Compliance.display( els[i], 'flagged-duplicate-id', 'No duplicate ids ("' + x + '")', 'error' );
 				}
 			}
 
@@ -294,24 +294,24 @@
 
 	}
 
-	function shameStyles() {
+	function doStyles() {
 
 		var els, i;
 
 		els = data.main.querySelectorAll( 'style' );
 		for ( i = 0; i < els.length; i++ ) {
-			Shame.display( els[i], 'shamed-tag-style', 'Avoid &lt;style&gt; tags in the body', 'warning' );
+			Compliance.display( els[i], 'flagged-tag-style', 'Avoid &lt;style&gt; tags in the body', 'warning' );
 		}
 
 	}
 
-	function shameDiscouragedAttributes() {
+	function doDiscouragedAttributes() {
 
 		var specs, tests;
 
 		specs = {
 			tag: '*',
-			class: 'shamed-attribute'
+			class: 'flagged-attribute'
 		};
 
 		tests = [
@@ -332,11 +332,11 @@
 		}
 		];
 
-		Shame.iterateTests( specs, tests );
+		Compliance.iterateTests( specs, tests );
 
 	}
 
-	function shameDeprecatedTags() {
+	function doDeprecatedTags() {
 
 		var tags, els, i, j;
 
@@ -345,7 +345,7 @@
 		for ( i = 0; i < tags.length; i++ ) {
 			els = data.main.querySelectorAll( tags[i] );
 			for ( j = 0; j < els.length; j++ ) {
-				Shame.display( els[j], 'shamed-tag-' + tags[i], '&lt;' + tags[i] + '&gt; tag is deprecated.', 'error' );
+				Compliance.display( els[j], 'flagged-tag-' + tags[i], '&lt;' + tags[i] + '&gt; tag is deprecated.', 'error' );
 			}
 		}
 
@@ -360,22 +360,22 @@
 		}
 
 		div = document.createElement( 'div' );
-		div.className = 'shame-status';
+		div.className = 'compliance-status';
 
 		plural = ( 1 == data.issues.errors ) ? '' : 's';
 		string = 'This page has ' + data.issues.errors + ' critical error' + plural + ' that must be addressed.';
 
 		button = document.createElement( 'div' );
-		button.className = 'shame-open-all-messages';
+		button.className = 'compliance-open-all-messages';
 		button.innerHTML = 'Open all messages';
 		button.addEventListener(
 			 'click',
 			function() {
-				if ( document.body.classList.contains( 'shame-open-all-messages' ) ) {
-					document.body.classList.remove( 'shame-open-all-messages' );
+				if ( document.body.classList.contains( 'compliance-open-all-messages' ) ) {
+					document.body.classList.remove( 'compliance-open-all-messages' );
 					button.innerHTML = 'Open all messages';
 				} else {
-					document.body.classList.add( 'shame-open-all-messages' );
+					document.body.classList.add( 'compliance-open-all-messages' );
 					button.innerHTML = 'Close all messages';
 				}
 			}
