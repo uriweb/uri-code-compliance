@@ -315,11 +315,13 @@
 		};
 
 		tests = [
+			/*
 			{
 				selectors: ['style'],
 				message: 'Avoid using inline styles',
 				type: 'warning'
 		},
+		*/
 			{
 				selectors: ['onclick'],
 				message: 'Avoid adding actions to elements using onclick',
