@@ -1,0 +1,17 @@
+{
+    "name": "uriweb/uri-code-compliance",
+    "type":  "wordpress-plugin",
+    "description": "URI Code Compliance is a Wordpress plugin that checks for and displays errors related to ADA compliance and other coding issues.",
+    "authors": [
+        {
+            "name": "URI Web Communications",
+            "email": "web-group@uri.edu",
+            "homepage": "https://github.com/uriweb"
+        }
+    ],
+    "homepage": "https://www.uri.edu",
+    "license": "GPL-3.0-only",
+    "require": {
+        "php": ">=7.4"
+    }
+}

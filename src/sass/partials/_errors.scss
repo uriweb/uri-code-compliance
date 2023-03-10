@@ -6,23 +6,23 @@
 
 	opacity: 1;
 
-	.shame-icon:after {
+	.compliance-icon:after {
 		top: 3px;
 		transform: rotate(180deg);
 	}
 
-	.shame-message-content {
+	.compliance-message-content {
 		display: block;
 	}
 
 }
 body.logged-in {
 
-	&.shame-open-all-messages .shame-wrapper .shame-message {
+	&.compliance-open-all-messages .compliance-wrapper .compliance-message {
 		@include open-message();
 	}
 
-	.shame-status {
+	.compliance-status {
 		padding: 2rem 1rem;
 		background: #ff4753;
 		color: #fff;
@@ -31,7 +31,7 @@ body.logged-in {
 		font-weight: bold;
 	}
 
-	.shame-open-all-messages {
+	.compliance-open-all-messages {
 
 		position: relative;
 		top: -2px;
@@ -48,11 +48,11 @@ body.logged-in {
 
 	}
 
-	.shame-wrapper {
+	.compliance-wrapper {
 
 		position: relative;
 
-		.shame-messages {
+		.compliance-messages {
 
 			position: absolute;
 			top: 0;
@@ -63,7 +63,7 @@ body.logged-in {
 
 		}
 
-		.shame-message {
+		.compliance-message {
 
 			position: relative;
 			display: block;
@@ -78,7 +78,7 @@ body.logged-in {
 			border-radius: 0 5px 5px;
 			box-shadow: 0 0 .3rem rgba(0,0,0,.3);
 
-			.shame-message-content {
+			.compliance-message-content {
 				display: none;
 				overflow: hidden;
 				margin-top: 10px;
@@ -95,7 +95,7 @@ body.logged-in {
 
 		}
 
-		.shame-icon {
+		.compliance-icon {
 
 			position: relative;
 			padding-left: 22px;
@@ -103,7 +103,7 @@ body.logged-in {
 			height: 16px;
 			line-height: 19px;
 			font-weight: bold;
-			background-image: url(images/errors.png);
+			background-image: url(../i/errors.png);
 			background-size: 16px auto;
 			background-repeat: no-repeat;
 
@@ -124,31 +124,31 @@ body.logged-in {
 
 		}
 
-		.shamed-element {
+		.compliance-flagged-element {
 			outline: 2px dotted #f0f;
 		}
 
-		.shame-type-error {
+		.compliance-type-error {
 
 			border: 1px solid #C01C1C;
 			border-top: 5px solid #C01C1C;
 			background: #ff4753;
 			color: #fff;
 
-			.shame-icon {
+			.compliance-icon {
 				background-position: 0 0;
 			}
 
 		}
 
-		.shame-type-warning {
+		.compliance-type-warning {
 
 			border: 1px solid #FF9F10;
 			border-top: 5px solid #FF9F10;
 			background: #fffc7b;
 			color: #000;
 
-			.shame-icon {
+			.compliance-icon {
 
 				background-position: 0 -16px;
 
@@ -160,24 +160,24 @@ body.logged-in {
 
 		}
 
-		.shame-type-suggestion {
+		.compliance-type-suggestion {
 
 			border: 1px solid #1052FF;
 			border-top: 5px solid #1052FF;
 			background: #6495ff;
 			color: #fff;
 
-			.shame-icon {
+			.compliance-icon {
 				background-position: 0 -32px;
 			}
 
 		}
 
-		&[class*="shamed-tag"],
-		&.shamed-attribute,
-		&.shamed-link {
+		&[class*="flagged-tag"],
+		&.flagged-attribute,
+		&.flagged-link {
 
-			.shame-messages {
+			.compliance-messages {
 				top: 2rem;
 			}
 
