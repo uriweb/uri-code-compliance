@@ -3,7 +3,7 @@
  * Plugin Name: URI Code Compliance
  * Plugin URI: http://www.uri.edu
  * Description: Checks for ADA compliance and other coding issues.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Author: URI Web Communications
  * Author URI: https://today.uri.edu/
  *
